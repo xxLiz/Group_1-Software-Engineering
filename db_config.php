@@ -13,12 +13,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-else {
-    echo "Connected successfully";
-}
 // Function to insert user data and address data into database
 function insertUserData($firstname, $lastname, $mobilenumber, $email, $password, $addressline1, $addressline2, $city, $state, $zipcode) {
-    echo $firstname;
     global $conn;
 
     // Insert address data into address_table
