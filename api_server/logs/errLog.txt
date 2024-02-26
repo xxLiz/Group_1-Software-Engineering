@@ -1,0 +1,2 @@
+2024/02/13	13:42:14	63fc2006-db35-4f1a-868b-2f2329c86109	Error: ENOENT: no such file or directory, stat 'C:\Users\guerr\Desktop\spring 2024\CSCI841\project\views\404.html'
+2024/02/13	13:56:02	dd5e5a00-0bde-490d-875f-d9eecf64a701	TypeError: pgsql.query is not a function
