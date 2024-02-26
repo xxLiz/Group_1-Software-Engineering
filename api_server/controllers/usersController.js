@@ -12,11 +12,11 @@ const getUserById = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    res.json(await update_pg(req.body.id, req.body.fname, req.body.lname, req.body.email) == 0 ? { success: false } : { success: true });
+    res.json(await update_pg(req.body.id, req.body.fname, req.body.lname, req.body.email, req.body.address, req.body.zipcode, req.body.phone) == 0 ? { success: false } : { success: true });
 }
 
 const createUser = async (req, res) => {
-    res.json(await insert_pg(req.body.fname, req.body.lname, req.body.email) == 0 ? { success: false } : { success: true })
+    res.json(await insert_pg(req.body.fname, req.body.lname, req.body.email, req.body.address, req.body.zipcode, req.body.phone) == 0 ? { success: false } : { success: true })
 }
 
 const deleteUser = async (req, res) => {

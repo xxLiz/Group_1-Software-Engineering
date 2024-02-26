@@ -20,20 +20,20 @@ const getById_pg = async (id) => {
     return entries.rows[0];
 };
 
-const update_pg = async (id, fname, lname, email) => {
+const update_pg = async (id, fname, lname, email, address, zipcode, phone) => {
     const pgsql = await getClient();
 
-    const entries = await pgsql.query('UPDATE users SET fname = $1, lname = $2, email = $3 WHERE id = $4',
-                                    [fname, lname, email, id]);
+    const entries = await pgsql.query('UPDATE users SET fname = $1, lname = $2, email = $3, adress = $4, zipcode = $5, phone = $6 WHERE id = $7',
+                                    [fname, lname, email, address, zipcode, phone, id]);
     await pgsql.end();
 
     return entries.rowCount;
 };
 
-const insert_pg = async (fname, lname, email) => {
+const insert_pg = async (fname, lname, email, address, zipcode, phone) => {
     const pgsql = await getClient();
 
-    const entries = await pgsql.query('INSERT INTO users (fname, lname, email) VALUES ($1, $2, $3)', [fname, lname, email]);
+    const entries = await pgsql.query('INSERT INTO users (fname, lname, email) VALUES ($1, $2, $3)', [fname, lname, email, address, zipcode, phone]);
     await pgsql.end();
 
     return entries.rowCount;
