@@ -33,7 +33,7 @@ const update_pg = async (id, fname, lname, email, address, zipcode, phone) => {
 const insert_pg = async (fname, lname, email, address, zipcode, phone) => {
     const pgsql = await getClient();
 
-    const entries = await pgsql.query('INSERT INTO users (fname, lname, email) VALUES ($1, $2, $3)', [fname, lname, email, address, zipcode, phone]);
+    const entries = await pgsql.query('INSERT INTO users (fname, lname, email, address, zipcode, phone) VALUES ($1, $2, $3)', [fname, lname, email, address, zipcode, phone]);
     await pgsql.end();
 
     return entries.rowCount;
