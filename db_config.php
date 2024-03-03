@@ -47,5 +47,3 @@ function insertUserData($firstname, $lastname, $mobilenumber, $email, $password,
             return "Error inserting user data: " . $conn->error;
         }
 }
-
-?>

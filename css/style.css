@@ -54,10 +54,14 @@ p {
     margin-top: 15px;
 }
 .error {
-    color: red;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
 .success {
-    color: green;
+    background-color: green;
+    color: white;
 }
 
 .error-message {
