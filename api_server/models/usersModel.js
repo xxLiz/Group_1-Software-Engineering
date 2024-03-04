@@ -42,7 +42,7 @@ const insert_pg = async (fname, lname, email, address, zipcode, phone) => {
 const delete_pg = async (id) => {
     const pgsql = await getClient();
 
-    const entries = await pgsql.query('DELETE * FROM users WHERE id = $1', [id]);
+    const entries = await pgsql.query('DELETE FROM users WHERE id = $1', [id]);
     await pgsql.end();
     return entries.rowCount;
 }
