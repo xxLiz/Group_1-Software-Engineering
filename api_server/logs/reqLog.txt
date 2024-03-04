@@ -87,3 +87,16 @@
 2024/02/29	12:19:51	d03aa9d6-5866-4721-ae6f-29d77280cbf6	GET	undefined	/menu/
 2024/02/29	12:25:03	856b1b5a-19ba-4fe5-ac3b-d63e90edd16b	GET	undefined	/menu/
 2024/02/29	12:25:06	101d276c-80fd-44da-9fb8-330654a673cc	GET	undefined	/menu/
+2024/03/04	09:16:12	0a1dd213-980f-43df-a576-2c5384e87820	GET	undefined	/globalcart
+2024/03/04	09:17:59	f8e34ddc-559f-4a91-a62e-49c293f37df7	GET	undefined	/globalcart
+2024/03/04	09:18:37	3c7cb6f3-de4b-4a96-bb02-7140b19a3399	GET	undefined	/globalcart
+2024/03/04	09:18:37	e259bae2-4dc9-4d17-937a-36e73791a362	GET	undefined	/globalcart
+2024/03/04	09:22:04	0c9a0e43-7054-47ce-9c87-9dab984585d0	GET	undefined	/globalcart/99
+2024/03/04	09:22:27	36e647b8-fe60-4d52-8abd-76a5911b4820	GET	undefined	/globalcart/99
+2024/03/04	09:23:39	8905e1ee-9702-443f-9b65-eaf14cd3b062	POST	undefined	/globalcart
+2024/03/04	09:23:49	656b9758-784b-4824-81fa-14a7ee336018	GET	undefined	/globalcart
+2024/03/04	09:24:21	18f6106e-18ca-4695-aec7-6f399b626c76	PUT	undefined	/globalcart
+2024/03/04	09:24:25	a4f79d00-653a-4229-b3d2-832d22f48a29	GET	undefined	/globalcart
+2024/03/04	09:24:43	598ce88d-b752-4d86-9360-d0b808bf9c30	DELETE	undefined	/globalcart
+2024/03/04	09:25:23	bc392fc8-0159-410c-b6a9-bdb8aae2b27e	DELETE	undefined	/globalcart
+2024/03/04	09:25:29	e4bb3549-f060-4470-9dbc-9954541aec17	GET	undefined	/globalcart
