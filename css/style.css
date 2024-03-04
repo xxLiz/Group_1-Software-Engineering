@@ -212,6 +212,10 @@ form textarea {
 	appearance: none;
 }
 
+form select {
+	cursor: pointer;
+}
+
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
