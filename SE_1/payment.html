@@ -18,28 +18,46 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="./index.html">
-					<img src="logo.jpg" alt="Logo"/>
+			<a class="navbar-brand" href="./home.html">
+					<img src="img/logo.jpg" alt="Logo" />
 					The Food Depot
-				</a> &nbsp;
+				</a>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="./home.html">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./menu.html">Menu</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link" href="./contacts.html">Contact us</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./register.html">Register</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./login.html">Login</a>
-						</li>
-					</ul>
+							<a class="nav-link" href="./menu.html">Menu</a>
+						</li>						
+					</ul>	
+					<a href="./cart.html" class="phone my-2 my-lg-0">
+						<svg class="cart__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path
+								d="M4.558 7l4.701-4.702c.199-.198.46-.298.721-.298.613 0 1.02.505 1.02 1.029 0 .25-.092.504-.299.711l-3.26 3.26h-2.883zm12.001 0h2.883l-4.701-4.702c-.199-.198-.46-.298-.721-.298-.613 0-1.02.505-1.02 1.029 0 .25.092.504.299.711l3.26 3.26zm3.703 4l-.016.041-3.598 8.959h-9.296l-3.597-8.961-.016-.039h16.523zm3.738-2h-24v2h.643c.534 0 1.021.304 1.256.784l4.101 10.216h12l4.102-10.214c.233-.481.722-.786 1.256-.786h.642v-2z"
+							/>
+						</svg>
+						<p class="cart__inside">Cart</p>
+					</a>
+					<a href="./login.php" class="phone my-2 my-lg-0">
+						<svg class="login__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path
+								d="m13.022 14.999v3.251c0 .412.335.75.752.75.188 0 .375-.071.518-.206 1.775-1.685 4.945-4.692 6.396-6.069.2-.189.312-.452.312-.725 0-.274-.112-.536-.312-.725-1.451-1.377-4.621-4.385-6.396-6.068-.143-.136-.33-.207-.518-.207-.417 0-.752.337-.752.75v3.251h-9.02c-.531 0-1.002.47-1.002 1v3.998c0 .53.471 1 1.002 1z"
+							/>
+						</svg>
+						<p class="login__signin">Login</p>
+					</a>
+					<a href="./register.php" class="phone my-2 my-lg-0">
+						<svg class="register__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path
+								d="M5 21h-5v-2h5v2zm3.424-5.718l4.402 4.399-5.826 1.319 1.424-5.718zm15.576-6.748l-9.689 9.804-4.536-4.536 9.689-9.802 4.536 4.534z"
+							/>
+						</svg>
+						<p class="register__user">Register</p>
+					</a>
 					<a href="tel:414-857-0107" class="phone my-2 my-lg-0">
 						<svg class="phone__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.64 513.64">
 							<path
@@ -47,7 +65,7 @@
 							/>
 						</svg>
 						<p class="phone__number">414-857-0107</p>
-					</a>
+					</a>					
 				</div>
 			</nav>
 		</header>
