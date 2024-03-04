@@ -3,7 +3,7 @@ const { getClient } = require('./db');
 const getAll_pg = async () => {
     const pgsql = await getClient();
 
-    const entries = await pgsql.query('SELECT cart.id, cart.notes, cart.menuitem_id AS id_in_menu, menuitem.name, menuitem.description, menuitem.price FROM cart JOIN menuitem ON cart.menuitem_id = menuitem.id;');
+    const entries = await pgsql.query('SELECT cart.id, cart.notes, cart.menuitem_id AS id_in_menu, menuitem.name, menuitem.description, menuitem.price FROM cart JOIN menuitem ON cart.menuitem_id = menuitem.id ORDER BY menuitem.name, cart.id;');
     await pgsql.end();
 
     return entries.rows;
