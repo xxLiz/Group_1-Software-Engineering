@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel="stylesheet" href="tailwindcss.css">
+        <link rel="stylesheet" href="style1.css">
+		<title>The Food Depot</title>
+	</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="./index.html">
+					<img src="logo.jpg" alt="Logo"/>
+					The Food Depot
+				</a> &nbsp;
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="./home.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./menu.html">Menu</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./contacts.html">Contact us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./register.html">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./login.html">Login</a>
+						</li>
+					</ul>
+					<a href="tel:414-857-0107" class="phone my-2 my-lg-0">
+						<svg class="phone__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.64 513.64">
+							<path
+								d="M499.66 376.96l-71.68-71.68c-25.6-25.6-69.12-15.359-79.36 17.92-7.68 23.041-33.28 35.841-56.32 30.72-51.2-12.8-120.32-79.36-133.12-133.12-7.68-23.041 7.68-48.641 30.72-56.32 33.28-10.24 43.52-53.76 17.92-79.36l-71.68-71.68c-20.48-17.92-51.2-17.92-69.12 0L18.38 62.08c-48.64 51.2 5.12 186.88 125.44 307.2s256 176.641 307.2 125.44l48.64-48.64c17.921-20.48 17.921-51.2 0-69.12z"
+							/>
+						</svg>
+						<p class="phone__number">414-857-0107</p>
+					</a>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<h1>The Food Depot</h1>
+			<section class="payment-section">
+                <div class="container">
+                    <div class="payment-wrapper">
+                        <div class="payment-left">
+                            <div class="payment-header">
+                                <div class="payment-header-icon"><i class="ri-flashlight-fill"></i></div>
+                                <div class="payment-header-title">Order Summary</div>
+                                <p class="payment-header-description">
+                                    <!---->
+                                    
+                                    <div class="order-list">
+                                
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Food</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Product 1</td>
+                                                <td>$20.00</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Product 2</td>
+                                                <td>$30.00</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <!-- Add more rows as needed -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                   
+                                     
+                                         
+                                    <!---->
+                                  
+                                </p>
+                            </div>
+                            <div class="payment-content">
+                                <div class="payment-body">
+                                    <div class="payment-plan">
+                                        <div class="payment-plan-type">TFD</div>
+                                        <div class="payment-plan-info">
+                                            <div class="payment-plan-info-name"></div>
+                                            <div class="payment-plan-info-price">$49.00</div>
+                                        </div>
+                                        <a href="#" class="payment-plan-change">Change</a>
+                                    </div>
+                                    <div class="payment-summary">
+                                        <div class="payment-summary-item">
+                                            <div class="payment-summary-name">Delivery fee</div>
+                                            <div class="payment-summary-price">Free</div>
+                                        </div>
+                                        <div class="payment-summary-item">
+                                            <div class="payment-summary-name">Discount 20%</div>
+                                            <div class="payment-summary-price">-$10</div>
+                                        </div>
+                                        <div class="payment-summary-divider"></div>
+                                        <div class="payment-summary-item payment-summary-total">
+                                            <div class="payment-summary-name">Total</div>
+                                            <div class="payment-summary-price">-$10</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-right">
+                            <!-- Card Payment Form -->
+                            <form action="payment.php" method="POST" class="payment-form">
+                                <h1 class="payment-title">Payment Details</h1>
+                                <div class="payment-method">
+                                    <input type="radio" name="payment-method" id="method-1" checked>
+                                    <label for="method-1" class="payment-method-item">
+                                        <img src="visa.png" alt="">
+                                    </label>
+                                    <input type="radio" name="payment-method" id="method-2">
+                                    <label for="method-2" class="payment-method-item">
+                                        <img src="mastercard.png" alt="">
+                                    </label>
+                                </div>
+                                <div class="payment-form-group">
+                                    <input type="email" placeholder=" " class="payment-form-control" name="email" id="email">
+                                    <label for="email" class="payment-form-label payment-form-label-required">Email Address</label>
+                                </div>
+                                <div class="payment-form-group">
+                                    <input type="text" placeholder=" " class="payment-form-control" name="card-number" id="card-number">
+                                    <label for="card-number" class="payment-form-label payment-form-label-required">Card Number</label>
+                                </div>
+                                <div class="payment-form-group-flex">
+                                    <div class="payment-form-group">
+                                        <input type="date" placeholder=" " class="payment-form-control" name="expiry-date" id="expiry-date">
+                                        <label for="expiry-date" class="payment-form-label payment-form-label-required">Expiry Date</label>
+                                    </div>
+                                    <div class="payment-form-group">
+                                        <input type="text" placeholder=" " class="payment-form-control" name="cvv" id="cvv">
+                                        <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="payment-form-submit-button" name="payment-method" value="card">
+                                    <i class="ri-wallet-line"></i> Pay
+                                </button>
+                           
+                            <!-- Cash on Delivery Form -->
+                           
+                                <button type="submit" class="payment-form-submit-button" name="payment-method" value="cash-on-delivery">
+                                    <i class="ri-wallet-line"></i> Cash on Delivery
+                                </button>
+                           </form>
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            
+        
+        </body>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="footer-about col-md-4">
+						<h3>ABOUT US</h3>
+						<p>
+							The Food Depot is a restaurant!
+						</p>
+					</div>
+					<div class="footer-address col-md-4">
+						<h3>ADDRESS</h3>
+						<div class="footer-address__block">
+							<div class="footer-address__item">
+								<p>Phone Number</p>
+								<a href="tel:414-857-0107">414-857-0107</a>
+							</div>
+							<div class="footer-address__item">
+								<p>Email address</p>
+								<a href="mailto:yummy@thefooddepot.com">yummy@thefooddepot.com</a>
+							</div>
+							<div class="footer-address__item">
+								<p>Location</p>
+								<p>837 W Marshall Lane, Marshalltown, IA 50158</p>
+							</div>
+						</div>
+					</div>
+					<div class="footer-hours col-md-4">
+						<h3>OPENING HOURS</h3>
+						<p>Monday – Sunday</p>
+						<p>8 am - 9 pm</p>
+					</div>
+					<p style="text-align: center; width: 100%; margin-top: 30px">Copyright © 2024 The Food Depot</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

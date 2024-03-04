@@ -7,7 +7,7 @@ const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const PORT = process.env.PORT || 3500;
 
-// custom middleware logger
+// custom middleware    logger
 app.use(logger);
 
 // Cross Origin Resource Sharing
@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/users', require('./views/usersView'));
-
+app.use('/menu', require('./views/menuView'));
+app.use('/globalcart', require('./views/cartView'));
 
 app.all('/*', (req, res) => {
     res.status(404);
