@@ -1,48 +1,49 @@
-<?php 
-session_start(); 
-include 'db_config.php';
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="container">
+        <!-- Display session message if it exists -->
+        <?php
+    session_start();
+    if (isset($_SESSION['error-message'])) {
+        echo '<p id="errorMessage" class="error">' . $_SESSION['error-message'] . '</p>';
+        // Unset session message variable after displaying it
+        unset($_SESSION['error-message']);
+    }
+	if (isset($_SESSION['success-message'])) {
+        echo '<p id="successMessage" class="success">' . $_SESSION['success-message'] . '</p>';
+        // Unset success session message variable after displaying it
+        unset($_SESSION['success-message']);
+    }
+	?>
+    <h2>LOGIN</h2>
+     <form action="process_login.php" method="post">
+     	<label>Email</label>
+     	<input type="text" name="email" placeholder="Enter your Email"><br>
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+     	<label>Password</label>
+     	<input type="password" name="password" placeholder="Enter your Password"><br>
 
-	function validate($data){
-       $data = trim($data);
-	   $data = stripslashes($data);
-	   $data = htmlspecialchars($data);
-	   return $data;
-	}
-
-	$email = validate($_POST['email']);
-	$password = validate($_POST['password']);
-
-	
-		// hashing the password
-        $password = md5($password);
-
-        
-		$sql = "SELECT * FROM Users WHERE email='$email'";
-
-		$result = mysqli_query($conn, $sql);
-
-		if (mysqli_num_rows($result) === 1) {
-			$row = mysqli_fetch_assoc($result);
-			echo $row;
-            if ($row['email'] === $email && $row['password'] === $password) {
-            	$_SESSION['email'] = $row['email'];
-            	$_SESSION['firstname'] = $row['firstname'];
-            	$_SESSION['id'] = $row['id'];
-				header("Location: home.html");
-		        exit();
-            }else{
-				echo "<script>alert('Incorect User name or password'); window.location.href = 'login.html';</script>";
-		        exit();
-			}
-		}else{
-			echo "<script>alert('Register first'); window.location.href = 'login.html';</script>";
-	        exit();
-		}
-	
-	
-}else{
-	header("Location: login.html");
-	exit();
-}
+     	<input type="submit" value="Login">
+     </form>
+     <p style="text-align: center;">Not Yet Registered? <a href="process_registration.php">Sign Up</a></p>
+</div>
+<script>
+	// Automatically hide error message after 5 seconds
+    setTimeout(function() {
+        var errorMessage = document.getElementById('errorMessage');
+		var successMessage = document.getElementById('successMessage');
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
+        }
+		if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }, 5000); // 5000 milliseconds = 5 seconds
+	</script>
+</body>
+</html>

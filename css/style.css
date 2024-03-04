@@ -216,6 +216,24 @@ form select {
 	cursor: pointer;
 }
 
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+p {
+    text-align: center;
+    margin-top: 15px;
+}
+.error {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.success {
+    background-color: green;
+    color: white;
+}
+
 form input::placeholder,
 form textarea::placeholder {
 	color: #ffffff80;
