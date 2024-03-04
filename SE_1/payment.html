@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<<html lang="en">>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -124,7 +124,8 @@
                             </div>
                         </div>
                         <div class="payment-right">
-                            <form action="" class="payment-form">
+                            <!-- Card Payment Form -->
+                            <form action="payment.php" method="POST" class="payment-form">
                                 <h1 class="payment-title">Payment Details</h1>
                                 <div class="payment-method">
                                     <input type="radio" name="payment-method" id="method-1" checked>
@@ -135,31 +136,38 @@
                                     <label for="method-2" class="payment-method-item">
                                         <img src="mastercard.png" alt="">
                                     </label>
-                                   
                                 </div>
                                 <div class="payment-form-group">
-                                    <input type="email" placeholder=" " class="payment-form-control" id="email">
+                                    <input type="email" placeholder=" " class="payment-form-control" name="email" id="email">
                                     <label for="email" class="payment-form-label payment-form-label-required">Email Address</label>
                                 </div>
                                 <div class="payment-form-group">
-                                    <input type="text" placeholder=" " class="payment-form-control" id="card-number">
+                                    <input type="text" placeholder=" " class="payment-form-control" name="card-number" id="card-number">
                                     <label for="card-number" class="payment-form-label payment-form-label-required">Card Number</label>
                                 </div>
                                 <div class="payment-form-group-flex">
                                     <div class="payment-form-group">
-                                        <input type="date" placeholder=" " class="payment-form-control" id="expiry-date">
+                                        <input type="date" placeholder=" " class="payment-form-control" name="expiry-date" id="expiry-date">
                                         <label for="expiry-date" class="payment-form-label payment-form-label-required">Expiry Date</label>
                                     </div>
                                     <div class="payment-form-group">
-                                        <input type="text" placeholder=" " class="payment-form-control" id="cvv">
+                                        <input type="text" placeholder=" " class="payment-form-control" name="cvv" id="cvv">
                                         <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
                                     </div>
                                 </div>
-                                <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Pay</button>
-                                <BR>
-                                <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Cash on Delivery</button>
-                            </form>
+                                <button type="submit" class="payment-form-submit-button" name="payment-method" value="card">
+                                    <i class="ri-wallet-line"></i> Pay
+                                </button>
+                           
+                            <!-- Cash on Delivery Form -->
+                           
+                                <button type="submit" class="payment-form-submit-button" name="payment-method" value="cash-on-delivery">
+                                    <i class="ri-wallet-line"></i> Cash on Delivery
+                                </button>
+                           </form>
+                        
                         </div>
+                        
                     </div>
                 </div>
             </section>
