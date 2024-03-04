@@ -2,7 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 use GuzzleHttp\Client;
 
-$client = new GuzzleHttp\Client(['base_uri' => 'localhost:3500/menu/']);
+$client = new GuzzleHttp\Client(['base_uri' => 'localhost:3500/globalcart/']);
 $api_connection = true;
 $connect_error = "";
 $response = null;
@@ -23,21 +23,21 @@ echo '
 <DOCTYPE html>
 <html lang=en>
   <head>
-    <title>Browse Menu</title>
+    <title>View Cart</title>
     <meta charset="utf-8">
     <!-- this css is temporary -->
     <style>
 
-.menu {
+.cart {
     padding: 5px;
     list-style-type: none;
 }
 
-.menuitem {
+.cartitem {
     margin: 10 0 10 0;
     padding: 10px;
     width: 50%;
-    border-style: double;
+    border-style: solid;
     border-radius: 10px;
 }
 
@@ -58,6 +58,10 @@ echo '
     padding: 10px 3px 10px 3px;
 }
 
+.foodnotes {
+    padding: 10px 3px 10px 3px;
+}
+
 .foodprice {
     padding: 6px;
     background-color: #EEEEEE;
@@ -73,30 +77,36 @@ echo '
   </head>
   <body>
     <script>
-var api_url = "http://localhost:3500/globalcart"
+var api_url = "http://localhost:3500/globalcart";
 
-function addToCart(id, itemname) {
+function updateNotes(itemid) {
+    var inputarea = document.getElementById("notes|" + itemid);
     fetch(api_url, {
-        method: "POST",
+        method: "PUT",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ id_in_menu: id })
-    }).then(() => { alert(itemname + " added to cart."); });
+        body: JSON.stringify({ id: itemid, notes: inputarea.value })
+    }).then(() => { alert("Item notes updated."); });
 }
+
     </script>
     <nav> <!-- maybe navigation bar could be made a separate php script to include --> </nav>
-    <h1>Menu</h1>';
+    <h1>Cart</h1>';
 
 if ($api_connection) {
-    echo '<ul class=menu>';
+    echo '<ul class=cart>';
 
     for ($i = 0; $i < $menulength; $i++) {
         echo '
-    <li class=menuitem>
+    <li class=cartitem>
     <p class=imageplaceholder>image here?</p>
     <h3 class=foodname>' . $menu[$i]->name . '</h3>
     <div class=fooddesc>' . $menu[$i]->description . '</div>
+    <div class=foodnotes>
+    Your order notes:<br>
+    <textarea id="notes|' . $menu[$i]->id . '">' . $menu[$i]->notes . '</textarea><br>
+    <button type=button onclick="updateNotes(' . $menu[$i]->id . ')">Update notes</button>
+    </div>
     <div class=foodprice>$' . $menu[$i]->price . '</div>
-    <button class=addtocart type=button onclick="addToCart(' . $menu[$i]->id . ', \'' . $menu[$i]->name . '\')">Add to Cart</button>
     </li>';
     }
 
