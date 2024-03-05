@@ -36,14 +36,17 @@
             unset($_SESSION['success-message']);
         }
         ?>
-        <h2>LOGIN</h2>
+        <h2 class="text-center">LOGIN</h2>
         <form action="process_login.php" method="post">
-            <label>Email</label>
-            <input type="text" name="email" placeholder="Enter your Email"><br>
-
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter your Password"><br>
-
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" placeholder="Enter your Email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter your Password" id="password"
+                    name="password" required>
+            </div>
             <input type="submit" value="Login">
         </form>
         <p style="text-align: center;">Not Yet Registered? <a href="process_registration.php">Sign Up</a></p>

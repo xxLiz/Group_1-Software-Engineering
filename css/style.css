@@ -359,3 +359,6 @@ form button:hover {
 		font-size: 13px;
 	}
 }
+.registration-error {
+	color: red;
+}
