@@ -8,7 +8,7 @@ const getClient = async () => {
     user: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DATABASE,
-    ssl: false,
+    ssl: true,
   });
   await client.connect();
   return client;
