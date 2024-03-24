@@ -14,61 +14,15 @@
         <link rel="stylesheet" href="tailwindcss.css">
         <link rel="stylesheet" href="style1.css">
 		<title>The Food Depot</title>
+        <script>
+            $(function () {
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script>
 	</head>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="./home.html">
-					<img src="img/logo.jpg" alt="Logo" />
-					The Food Depot
-				</a>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="./home.html">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./contacts.html">Contact us</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./menu.html">Menu</a>
-						</li>						
-					</ul>	
-					<a href="./cart.html" class="phone my-2 my-lg-0">
-						<svg class="cart__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path
-								d="M4.558 7l4.701-4.702c.199-.198.46-.298.721-.298.613 0 1.02.505 1.02 1.029 0 .25-.092.504-.299.711l-3.26 3.26h-2.883zm12.001 0h2.883l-4.701-4.702c-.199-.198-.46-.298-.721-.298-.613 0-1.02.505-1.02 1.029 0 .25.092.504.299.711l3.26 3.26zm3.703 4l-.016.041-3.598 8.959h-9.296l-3.597-8.961-.016-.039h16.523zm3.738-2h-24v2h.643c.534 0 1.021.304 1.256.784l4.101 10.216h12l4.102-10.214c.233-.481.722-.786 1.256-.786h.642v-2z"
-							/>
-						</svg>
-						<p class="cart__inside">Cart</p>
-					</a>
-					<a href="./login.php" class="phone my-2 my-lg-0">
-						<svg class="login__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path
-								d="m13.022 14.999v3.251c0 .412.335.75.752.75.188 0 .375-.071.518-.206 1.775-1.685 4.945-4.692 6.396-6.069.2-.189.312-.452.312-.725 0-.274-.112-.536-.312-.725-1.451-1.377-4.621-4.385-6.396-6.068-.143-.136-.33-.207-.518-.207-.417 0-.752.337-.752.75v3.251h-9.02c-.531 0-1.002.47-1.002 1v3.998c0 .53.471 1 1.002 1z"
-							/>
-						</svg>
-						<p class="login__signin">Login</p>
-					</a>
-					<a href="./register.php" class="phone my-2 my-lg-0">
-						<svg class="register__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path
-								d="M5 21h-5v-2h5v2zm3.424-5.718l4.402 4.399-5.826 1.319 1.424-5.718zm15.576-6.748l-9.689 9.804-4.536-4.536 9.689-9.802 4.536 4.534z"
-							/>
-						</svg>
-						<p class="register__user">Register</p>
-					</a>
-					<a href="tel:414-857-0107" class="phone my-2 my-lg-0">
-						<svg class="phone__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.64 513.64">
-							<path
-								d="M499.66 376.96l-71.68-71.68c-25.6-25.6-69.12-15.359-79.36 17.92-7.68 23.041-33.28 35.841-56.32 30.72-51.2-12.8-120.32-79.36-133.12-133.12-7.68-23.041 7.68-48.641 30.72-56.32 33.28-10.24 43.52-53.76 17.92-79.36l-71.68-71.68c-20.48-17.92-51.2-17.92-69.12 0L18.38 62.08c-48.64 51.2 5.12 186.88 125.44 307.2s256 176.641 307.2 125.44l48.64-48.64c17.921-20.48 17.921-51.2 0-69.12z"
-							/>
-						</svg>
-						<p class="phone__number">414-857-0107</p>
-					</a>					
-				</div>
-			</nav>
-		</header>
+	<div id="header"></div>
 		<main>
 			<h1>The Food Depot</h1>
 			<section class="payment-section">
@@ -193,40 +147,6 @@
         
         </body>
 		</main>
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="footer-about col-md-4">
-						<h3>ABOUT US</h3>
-						<p>
-							The Food Depot is a restaurant!
-						</p>
-					</div>
-					<div class="footer-address col-md-4">
-						<h3>ADDRESS</h3>
-						<div class="footer-address__block">
-							<div class="footer-address__item">
-								<p>Phone Number</p>
-								<a href="tel:414-857-0107">414-857-0107</a>
-							</div>
-							<div class="footer-address__item">
-								<p>Email address</p>
-								<a href="mailto:yummy@thefooddepot.com">yummy@thefooddepot.com</a>
-							</div>
-							<div class="footer-address__item">
-								<p>Location</p>
-								<p>837 W Marshall Lane, Marshalltown, IA 50158</p>
-							</div>
-						</div>
-					</div>
-					<div class="footer-hours col-md-4">
-						<h3>OPENING HOURS</h3>
-						<p>Monday – Sunday</p>
-						<p>8 am - 9 pm</p>
-					</div>
-					<p style="text-align: center; width: 100%; margin-top: 30px">Copyright © 2024 The Food Depot</p>
-				</div>
-			</div>
-		</footer>
+		<div id="footer"></div>
 	</body>
 </html>

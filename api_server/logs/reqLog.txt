@@ -100,3 +100,13 @@
 2024/03/04	09:24:43	598ce88d-b752-4d86-9360-d0b808bf9c30	DELETE	undefined	/globalcart
 2024/03/04	09:25:23	bc392fc8-0159-410c-b6a9-bdb8aae2b27e	DELETE	undefined	/globalcart
 2024/03/04	09:25:29	e4bb3549-f060-4470-9dbc-9954541aec17	GET	undefined	/globalcart
+2024/03/15	23:03:52	60ebb026-9d72-4611-ad7d-bed8ed1156a4	GET	undefined	/menu/
+2024/03/15	23:04:07	50a234f6-559c-495b-9db4-1efbab3f6183	OPTIONS	http://localhost	/globalcart
+2024/03/15	23:04:07	957ec8a1-e629-4393-996c-43f7a172406b	POST	http://localhost	/globalcart
+2024/03/18	12:03:42	0cd83620-8d21-47d1-af4b-cc7ff0642799	GET	undefined	/menu/
+2024/03/18	12:03:57	a50ea17d-bd06-4369-bc9d-a35ff1346b72	OPTIONS	http://localhost	/globalcart
+2024/03/18	12:03:57	99fe72bb-0fd5-4b76-bb82-b34d5347613d	POST	http://localhost	/globalcart
+2024/03/20	13:14:53	7bedab69-8702-4a77-beec-64ceb8280dcb	GET	undefined	/menu/
+2024/03/20	13:19:17	75485f0a-de3b-4db2-bd22-dafa26b47624	GET	undefined	/menu/
+2024/03/20	13:43:30	79934dbd-981e-407f-84fa-f7c3bab15a6f	GET	undefined	/menu/
+2024/03/20	13:45:42	c72f58b8-9b62-47f9-a728-144f7377e943	GET	undefined	/menu/
