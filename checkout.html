@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        /* General layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #343a40;
+        }
+
+        /* Payment modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+        
+        /* Payment method buttons */
+        .payment-method-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .payment-method-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Checkout form */
+        #paymentForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        #paymentForm h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        #paymentForm label {
+            display: block;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        #paymentForm input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            box-sizing: border-box;
+        }
+
+        #paymentForm button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 200px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #paymentForm button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Checkout</h1>
+
+    <!-- Checkout form -->
+    <form id="paymentForm" action="process_payment.php" method="post">
+        
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <!-- Hidden input field to store payment method -->
+        <input type="hidden" id="payment_method" name="payment_method" value="">
+
+
+        <button type="submit" id="submitBtn" style="display: none;">Submit</button>
+    </form>
+
+    <!-- Payment method modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Payment Method</h2>
+            <button class="payment-method-button" id="cardPaymentBtn" onclick="selectPaymentMethod('card')">Card Payment</button>
+            <button class="payment-method-button" id="cashOnDeliveryBtn" onclick="selectPaymentMethod('cash')">Cash on Delivery</button>
+        </div>
+    </div>
+
+    <!-- Checkout button -->
+    <button class="payment-method-button" id="checkoutBtn">Select Payment Method</button>
+</div>
+
+<script>
+    // Get the checkout button and the payment modal
+    var checkoutBtn = document.getElementById("checkoutBtn");
+    var modal = document.getElementById("paymentModal");
+
+    // When the user clicks the checkout button, open the payment modal
+    checkoutBtn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Function to select payment method
+    function selectPaymentMethod(method) {
+        document.getElementById('payment_method').value = method;
+        document.getElementById('submitBtn').click(); // Submit the form
+    }
+</script>
+
+</body>
+</html>
