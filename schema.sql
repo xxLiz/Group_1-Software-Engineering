@@ -37,3 +37,45 @@ CREATE TABLE IF NOT EXISTS `Users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checkout`
+--
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    payment_method VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `credit card method`
+--
+CREATE TABLE credit_cards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    card VARCHAR(16) NOT NULL,
+    expiry VARCHAR(5) NOT NULL, -- Format: MM/YY
+    cvv VARCHAR(4) NOT NULL,
+    billing VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cash on delivery method`
+--
+CREATE TABLE cash_on_delivery (
+
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone INT(11) NOT NULL,
+    
+);
