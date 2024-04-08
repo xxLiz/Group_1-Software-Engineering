@@ -98,24 +98,30 @@ if ($api_connection) {
     for ($i = 0; $i < $menulength; $i++) {
         echo '
     <li class=cartitem>
-    <p class=imageplaceholder>image here?</p>
-    <h3 class=foodname>' . $menu[$i]->name . '</h3>
-    <div class=fooddesc>' . $menu[$i]->description . '</div>
-    <div class=foodnotes>
-    Your order notes:<br>
-    <textarea id="notes|' . $menu[$i]->id . '">' . $menu[$i]->notes . '</textarea><br>
-    <button type=button onclick="updateNotes(' . $menu[$i]->id . ')">Update notes</button>
-    </div>
-    <div class=foodprice>$' . $menu[$i]->price . '</div>
+        <p class=imageplaceholder>image here?</p>
+        <h3 class=foodname>' . $menu[$i]->name . '</h3>
+        <div class=fooddesc>' . $menu[$i]->description . '</div>
+        <div class=foodnotes>
+            Your order notes:<br>
+            <textarea id="notes|' . $menu[$i]->id . '">' . $menu[$i]->notes . '</textarea><br>
+            <button type=button onclick="updateNotes(' . $menu[$i]->id . ')">Update notes</button>
+        </div>
+        <div class=foodprice>$' . $menu[$i]->price . '</div>
     </li>';
     }
 
     echo '</ul>';
+   
+    echo '
+    <div>
+        <a href="checkout.html"><button type="button">Checkout</button></a>
+        
+    </div>';
 }
 else {
     echo '<p class=apierror>API connection failed. Error details: ' . $connect_error . '</p>';
 }
 
-echo '</body></html>';
 
+echo '</body></html>';
 ?>
