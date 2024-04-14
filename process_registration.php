@@ -1,17 +1,14 @@
 <?php
-session_start(); // Start the session
-include 'db_config.php';
-
-if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mobilenumber']) && isset($_POST['email']) && isset($_POST['password'])
-    && isset($_POST['addressline1']) && isset($_POST['addressline2']) && isset($_POST['city']) && isset($_POST['state'])&& isset($_POST['zipcode'])) {
-
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+require 'db_operations.php';
+require 'validations.php';
+class ProcessRegistration{
+    private $dboperations;
+    public function __construct() {
+        $this->dboperations = new DbOperations();
     }
-
+    public function registerUser() {
+        if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mobilenumber']) && isset($_POST['email']) && isset($_POST['password'])
+        && isset($_POST['addressline1']) && isset($_POST['addressline2']) && isset($_POST['city']) && isset($_POST['state'])&& isset($_POST['zipcode'])) {
     $firstname = validate($_POST['firstname']);
     $lastname = validate($_POST['lastname']);
     $mobilenumber = validate($_POST['mobilenumber']);
@@ -22,20 +19,16 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mob
     $city = validate($_POST['city']);
     $state = validate($_POST['state']);
     $zipcode = validate($_POST['zipcode']);
-
+    
     // Hashing the password
     $password = md5($password);
-
-    $sql = "SELECT * FROM Users WHERE email='$email' ";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
+    
+    if ($this->dboperations->isEmailRegistered($email)) {
         $_SESSION['error-message'] = "The email is already registered. Please try another one";
         header("Location: register.php");
         exit();
     } else {
-        // Insert user data into database
-        $result2 = insertUserData($firstname, $lastname, $mobilenumber, $email, $password, $addressline1, $addressline2, $city, $state, $zipcode);
+        $result2 = $this->dboperations->insertUserData($firstname, $lastname, $mobilenumber, $email, $password, $addressline1, $addressline2, $city, $state, $zipcode);
         if ($result2) {
             $_SESSION['success-message'] = "Account created successfully";
             header("Location: login.php");
@@ -50,7 +43,12 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mob
     header("Location: register.php");
     exit();
 }
+}
+}
+
+session_start(); // Start the session
+$processregistration=new ProcessRegistration();
+$processregistration->registerUser();
 unset($_SESSION['error-message']);
 unset($_SESSION['success-message']);
 $conn->close();
-?>
