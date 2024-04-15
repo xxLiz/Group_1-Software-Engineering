@@ -5,8 +5,8 @@ require 'validations.php';
 
 class Process_login{
 	private $dboperations;
-	public function __construct() {
-        $this->dboperations = new DbOperations();
+	public function __construct(Dboperations $dboperations) {
+        $this->dboperations = $dboperations;
     }
 	public function loginUser(){
 		if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -40,7 +40,7 @@ class Process_login{
 		}
 	}
 }
-$processlogin=new Process_login();
+$processlogin=new Process_login(new DbOperations());
 $processlogin->loginUser();
 unset($_SESSION['error-message']);
 unset($_SESSION['success-message']);

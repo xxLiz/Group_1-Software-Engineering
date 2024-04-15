@@ -3,8 +3,8 @@ require 'db_operations.php';
 require 'validations.php';
 class ProcessRegistration{
     private $dboperations;
-    public function __construct() {
-        $this->dboperations = new DbOperations();
+    public function __construct(Dboperations $dboperations) {
+        $this->dboperations =$dboperations;
     }
     public function registerUser() {
         if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['mobilenumber']) && isset($_POST['email']) && isset($_POST['password'])
@@ -47,7 +47,7 @@ class ProcessRegistration{
 }
 
 session_start(); // Start the session
-$processregistration=new ProcessRegistration();
+$processregistration=new ProcessRegistration(new DbOperations());
 $processregistration->registerUser();
 unset($_SESSION['error-message']);
 unset($_SESSION['success-message']);
