@@ -1,44 +1,31 @@
 <?php
-
+ require 'process_registration.php';
+ //require 'db_operations.php';
 use PHPUnit\Framework\TestCase;
 
-use MyApp\Db_operations; // Include the file containing the function to be tested
-
 class RegistrationTest extends TestCase {
+    // Positive Test Case: Email is not registered
+    public function testisEmailRegistered() {
+      // Test Case 1: Successful Registration
+function test_successful_registration() {
+    $_POST['firstname'] = 'John';
+    $_POST['lastname'] = 'Doe';
+    $_POST['email'] = 'john@example.com';
+    $_POST['password'] = 'password123';
+    $_POST['mobilenumber'] = '1234567890';
+    $_POST['addressline1'] = '123 Main St';
+    $_POST['addressline2'] = '';
+    $_POST['city'] = 'New York';
+    $_POST['state'] = 'NY';
+    $_POST['zipcode'] = '10001';
 
-    // Mocking the database connection and SQL query execution
-    public function testIsEmailRegistered() {
-        // Mock the mysqli class
-        $mysqliMock = $this->getMockBuilder('mysqli')
-                           ->disableOriginalConstructor()
-                           ->getMock();
+    // Simulate registration process
+    $processregistration = new ProcessRegistration(new DbOperations());
+    $processregistration->registerUser();
 
-        // Mock the mysqli_result class
-        $mysqliResultMock = $this->getMockBuilder('mysqli_result')
-                                 ->disableOriginalConstructor()
-                                 ->getMock();
-
-        // Set up the behavior of the mysqli_query method
-        $mysqliMock->expects($this->once())
-                   ->method('query')
-                   ->willReturn($mysqliResultMock);
-
-        // Set up the behavior of the mysqli_num_rows method
-        $mysqliResultMock->expects($this->once())
-                         ->method('num_rows')
-                         ->willReturn(1);
-
-        // Replace the connectToDatabase function with a mock that returns the mock mysqli object
-        $this->expects($this->once())
-             ->method('connectToDatabase')
-             ->willReturn($mysqliMock);
-
-        // Call the function with a dummy email
-        $result = isEmailRegistered('test@example.com');
-
-        // Check if the function returns true since the email is registered
-        $this->assertTrue($result);
+    // Verify the outcome
+    // Check if the current URL contains 'login.php' after registration
+    assert(strpos($_SERVER['REQUEST_URI'], 'login.php') !== false);
+}
     }
 }
-
-?>
