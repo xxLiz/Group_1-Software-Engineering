@@ -49,7 +49,7 @@
             </div>
             <input type="submit" value="Login">
         </form>
-        <p style="text-align: center;">Not Yet Registered? <a href="processRegistration.php">Sign Up</a></p>
+        <p style="text-align: center;">Not Yet Registered? <a href="handle_registration.php">Sign Up</a></p>
     </div>
     <div id="footer"></div>
     <script>
