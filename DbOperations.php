@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+require 'DatabaseConnection.php';
 class DbOperations{
     private $dbConnection;
     public function __construct() {

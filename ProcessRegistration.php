@@ -1,5 +1,6 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+require 'DbOperations.php';
+require 'validations.php';
 class ProcessRegistration{
     private $dboperations;
     public function __construct(Dboperations $dboperations) {
@@ -45,9 +46,9 @@ class ProcessRegistration{
 }
 }
 
-// session_start(); // Start the session
-// $processregistration=new ProcessRegistration(new DbOperations());
-// $processregistration->registerUser();
-// unset($_SESSION['error-message']);
-// unset($_SESSION['success-message']);
-// $conn->close();
+session_start(); // Start the session
+$processregistration=new ProcessRegistration(new DbOperations());
+$processregistration->registerUser();
+unset($_SESSION['error-message']);
+unset($_SESSION['success-message']);
+$conn->close();
