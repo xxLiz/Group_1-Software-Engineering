@@ -25,22 +25,22 @@ class Process_login{
 				} else {
 					$_SESSION['error-message'] = "Incorect password";
 					header("Location: login.php");
-					exit();
+					//exit();
 				}
 			}
 			else{
 				$_SESSION['error-message'] = "This email is not registered";
 				header("Location: login.php");
-				exit();
+				//exit();
 			}
 		}
 		else{
 			header("Location: login.php");
-			exit();
+			//exit();
 		}
 	}
 }
 $processlogin=new Process_login(new DbOperations());
 $processlogin->loginUser();
-unset($_SESSION['error-message']);
-unset($_SESSION['success-message']);
+// unset($_SESSION['error-message']);
+// unset($_SESSION['success-message']);
