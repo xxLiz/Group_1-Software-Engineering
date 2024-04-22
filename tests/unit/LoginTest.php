@@ -1,5 +1,5 @@
 <?php
-require 'process_login.php';
+require 'ProcessLogin.php';
 use PHPUnit\Framework\TestCase;
 
 class LoginTest extends TestCase{
@@ -36,7 +36,7 @@ class LoginTest extends TestCase{
             ->willReturn(false);
             
         // Create a ProcessRegistration instance with the mock object
-        $processlogin = new Process_login($dboperationsMock);
+        $processlogin = new ProcessLogin($dboperationsMock);
 
         // Call the registerUser method
         $processlogin->loginUser();
@@ -66,7 +66,7 @@ class LoginTest extends TestCase{
             ));
 
         // Create a ProcessRegistration instance with the mock object
-        $processlogin = new Process_login($dboperationsMock);
+        $processlogin = new ProcessLogin($dboperationsMock);
 
         // Call the registerUser method
         $processlogin->loginUser();
@@ -101,7 +101,7 @@ class LoginTest extends TestCase{
         $_POST['password'] = 'correct_password'; // Correct password
 
         // Initialize Process_login with mocked Dboperations
-        $processLogin = new Process_login($dboperationsMock);
+        $processLogin = new ProcessLogin($dboperationsMock);
 
         // Call the loginUser method
         $processLogin->loginUser();
