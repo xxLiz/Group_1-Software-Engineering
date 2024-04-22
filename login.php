@@ -37,7 +37,7 @@
         }
         ?>
         <h2 class="text-center">LOGIN</h2>
-        <form action="process_login.php" method="post">
+        <form action="handle_login.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" class="form-control" placeholder="Enter your Email" id="email" name="email" required>
@@ -49,7 +49,7 @@
             </div>
             <input type="submit" value="Login">
         </form>
-        <p style="text-align: center;">Not Yet Registered? <a href="processRegistration.php">Sign Up</a></p>
+        <p style="text-align: center;">Not Yet Registered? <a href="handle_registration.php">Sign Up</a></p>
     </div>
     <div id="footer"></div>
     <script>

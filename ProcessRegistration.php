@@ -26,17 +26,17 @@ class ProcessRegistration{
     if ($this->dboperations->isEmailRegistered($email)) {
         $_SESSION['error-message'] = "The email is already registered. Please try another one";
         header("Location: register.php");
-        exit();
+        //exit();
     } else {
         $result2 = $this->dboperations->insertUserData($firstname, $lastname, $mobilenumber, $email, $password, $addressline1, $addressline2, $city, $state, $zipcode);
         if ($result2) {
             $_SESSION['success-message'] = "Account created successfully";
             header("Location: login.php");
-            exit();
+            // exit();
         } else {
             $_SESSION['error-message'] = "Error: Insert query is not executed";
             header("Location: register.php");
-            exit();
+            // exit();
         }
     }
 } else {
@@ -45,10 +45,3 @@ class ProcessRegistration{
 }
 }
 }
-
-session_start(); // Start the session
-$processregistration=new ProcessRegistration(new DbOperations());
-$processregistration->registerUser();
-unset($_SESSION['error-message']);
-unset($_SESSION['success-message']);
-$conn->close();

@@ -32,7 +32,7 @@
         }
         ?>
         <h2 class="text-center">Registration Form</h2>
-        <form action="ProcessRegistration.php" method="post">
+        <form action="handle_Registration.php" method="post">
             <div class="form-group">
                 <label for="firstname">First Name:</label>
                 <input type="text" class="form-control" placeholder="Enter First Name" id="firstname" name="firstname"
@@ -97,7 +97,7 @@
             <!-- <button type="submit" class="btn btn-dark">Register</button> -->
         </form>
 
-        <p style="text-align: center;">Already a member? <a href="process_login.php">Sign In</a></p>
+        <p style="text-align: center;">Already a member? <a href="handle_login.php">Sign In</a></p>
     </div>
     <div id="footer"></div>
     <script src="register.js"></script>

@@ -1,31 +1,75 @@
 <?php
- require 'process_registration.php';
- //require 'db_operations.php';
+require 'processRegistration.php';
 use PHPUnit\Framework\TestCase;
 
 class RegistrationTest extends TestCase {
-    // Positive Test Case: Email is not registered
+
+    // Test Case: Email is already registered
     public function testisEmailRegistered() {
-      // Test Case 1: Successful Registration
-function test_successful_registration() {
-    $_POST['firstname'] = 'John';
-    $_POST['lastname'] = 'Doe';
-    $_POST['email'] = 'john@example.com';
-    $_POST['password'] = 'password123';
-    $_POST['mobilenumber'] = '1234567890';
-    $_POST['addressline1'] = '123 Main St';
-    $_POST['addressline2'] = '';
-    $_POST['city'] = 'New York';
-    $_POST['state'] = 'NY';
-    $_POST['zipcode'] = '10001';
+        $_POST['firstname'] = 'John';
+        $_POST['lastname'] = 'Doe';
+        $_POST['mobilenumber'] = '1234567890';
+        $_POST['email'] = 'john@example.com';
+        $_POST['password'] = 'password';
+        $_POST['addressline1'] = '123 Main St';
+        $_POST['addressline2'] = 'Apt 101';
+        $_POST['city'] = 'Anytown';
+        $_POST['state'] = 'CA';
+        $_POST['zipcode'] = '12345';
 
-    // Simulate registration process
-    $processregistration = new ProcessRegistration(new DbOperations());
-    $processregistration->registerUser();
+        
+        // Create a mock for the DbOperations class
+        $dboperationsMock = $this->getMockBuilder(DbOperations::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $dboperationsMock->expects($this->once())
+            ->method('isEmailRegistered')
+            ->with("john@example.com")
+            ->willReturn(true);
+            
+        // Create a ProcessRegistration instance with the mock object
+        $processRegistration = new ProcessRegistration($dboperationsMock);
 
-    // Verify the outcome
-    // Check if the current URL contains 'login.php' after registration
-    assert(strpos($_SERVER['REQUEST_URI'], 'login.php') !== false);
-}
+        // Call the registerUser method
+        $processRegistration->registerUser();
+        
+        // Assertions
+        $this->assertEquals("The email is already registered. Please try another one", $_SESSION['error-message']);
+    }
+
+    // Test Case: User enters valid input data
+    public function testValidInputData() {
+        $_POST['firstname'] = 'Jane';
+        $_POST['lastname'] = 'Singh';
+        $_POST['mobilenumber'] = '9876543210';
+        $_POST['email'] = 'jane@example.com';
+        $_POST['password'] = 'password123';
+        $_POST['addressline1'] = '123 Main St';
+        $_POST['addressline2'] = 'Apt 101';
+        $_POST['city'] = 'Anytown';
+        $_POST['state'] = 'CA';
+        $_POST['zipcode'] = '12345';
+    
+        // Create a mock for the DbOperations class
+        $dboperationsMock = $this->getMockBuilder(DbOperations::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $dboperationsMock->expects($this->once())
+            ->method('isEmailRegistered')
+            ->with("jane@example.com")
+            ->willReturn(false); // Assuming email is not registered
+    
+        $dboperationsMock->expects($this->once())
+            ->method('insertUserData')
+            ->willReturn(true); // Assuming insertion is successful
+    
+        // Create a ProcessRegistration instance with the mock object
+        $processRegistration = new ProcessRegistration($dboperationsMock);
+    
+        // Call the registerUser method
+        $processRegistration->registerUser();
+        
+        // Assertions
+        $this->assertEquals("Account created successfully", $_SESSION['success-message']);
     }
 }
