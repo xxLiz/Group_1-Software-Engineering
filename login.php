@@ -37,7 +37,7 @@
         }
         ?>
         <h2 class="text-center">LOGIN</h2>
-        <form action="process_login.php" method="post">
+        <form action="handle_login.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" class="form-control" placeholder="Enter your Email" id="email" name="email" required>

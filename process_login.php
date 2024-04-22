@@ -1,5 +1,4 @@
 <?php 
-session_start(); 
 require 'DbOperations.php';
 require 'validations.php';
 
@@ -21,7 +20,7 @@ class Process_login{
 					$_SESSION['firstname'] = $user['firstname'];
 					$_SESSION['id'] = $user['id'];
 					header("Location: home.html");
-					exit();
+					//exit();
 				} else {
 					$_SESSION['error-message'] = "Incorect password";
 					header("Location: login.php");
@@ -40,7 +39,3 @@ class Process_login{
 		}
 	}
 }
-$processlogin=new Process_login(new DbOperations());
-$processlogin->loginUser();
-// unset($_SESSION['error-message']);
-// unset($_SESSION['success-message']);

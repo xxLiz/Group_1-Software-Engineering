@@ -97,7 +97,7 @@
             <!-- <button type="submit" class="btn btn-dark">Register</button> -->
         </form>
 
-        <p style="text-align: center;">Already a member? <a href="process_login.php">Sign In</a></p>
+        <p style="text-align: center;">Already a member? <a href="handle_login.php">Sign In</a></p>
     </div>
     <div id="footer"></div>
     <script src="register.js"></script>
