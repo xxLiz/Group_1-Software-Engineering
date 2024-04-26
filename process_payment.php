@@ -1,4 +1,5 @@
 <?php
+require 'DatabaseConnection.php';
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect form data
@@ -9,19 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment_method = $_POST["payment_method"];
 
     // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "the-food-depot";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    $dbConnection = new DatabaseConnection();
+    $conn=$dbConnection->getConnection();
+    
     // Prepare and bind statement
     $stmt = $conn->prepare("INSERT INTO orders (first_name, last_name, email, phone, payment_method) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $first_name, $last_name, $email, $phone, $payment_method);
