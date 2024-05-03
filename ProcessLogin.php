@@ -18,6 +18,9 @@ class ProcessLogin{
 				if ($user['email'] === $email && $user['password'] === $password) {
 					$_SESSION['email'] = $user['email'];
 					$_SESSION['firstname'] = $user['firstname'];
+					$_SESSION['firstname'] = $user['firstname'];
+					$_SESSION['lastname'] = $user['lastname'];
+					$_SESSION['mobilenumber'] = $user['mobilenumber'];
 					$_SESSION['id'] = $user['id'];
 					header("Location: home.html");
 					//exit();
