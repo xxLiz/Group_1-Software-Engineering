@@ -510,3 +510,16 @@ form button:hover {
 .registration-error {
 	color: red;
 }
+
+.profile__title {
+	margin-top: 60px;
+	color: whitesmoke;
+	font-weight: bold;
+	font-size: 32px;
+	border-top: 1px solid whitesmoke;
+	padding-top: 20px;
+}
+
+.table-text {
+	color: whitesmoke;
+}
