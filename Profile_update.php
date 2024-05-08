@@ -2,10 +2,8 @@
 require_once 'DatabaseConnection.php'; 
 session_start();
 
-
 $dbConnection = new DatabaseConnection();
 $connection = $dbConnection->getConnection(); 
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
@@ -17,11 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lastname = $_POST['lastname'] ?? '';
         $email = $_POST['email'] ?? '';
         $mobilenumber = $_POST['mobilenumber'] ?? '';
-        $address_id = $_POST['address_id'] ?? '';
 
-        $sql = "UPDATE Users SET firstname=?, lastname=?, email=?, mobilenumber=?, address_id=? WHERE id=?";
+        $sql = "UPDATE Users SET firstname=?, lastname=?, email=?, mobilenumber=? WHERE id=?";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ssssii", $firstname, $lastname, $email, $mobilenumber, $address_id, $user_id);
+        $stmt->bind_param("ssssii", $firstname, $lastname, $email, $mobilenumber, $user_id);
 
         if ($stmt->execute()) {
             echo "Profile updated successfully!";
@@ -52,14 +49,12 @@ if (isset($_SESSION['id'])) {
      
         echo "No user data found.";
     }
-
   
     $result->free();
     $stmt->close();
 } else {
     echo "User ID is not set in the session.";
 }
-
 
 $dbConnection->closeConnection();
 ?>
@@ -111,12 +106,6 @@ $dbConnection->closeConnection();
                     <th class="table-text"><i class="bi bi-telephone"></i>Mobile Number</th>
                     <td>
                         <input value="<?=$row['mobilenumber'] ?? ''?>" type="text" class="form-control" name="mobilenumber" placeholder="Mobile number">
-                    </td>
-                </tr>
-				<tr>
-                    <th class="table-text"><i class="bi bi-house"></i>Address</th>
-                    <td>
-                        <input value="<?=$row['address_id'] ?? ''?>" type="text" class="form-control" name="address_id" placeholder="Address">
                     </td>
                 </tr>
             </table>
