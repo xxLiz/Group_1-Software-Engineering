@@ -13,7 +13,7 @@
         </script>
     <script>
         $(function () {
-            $("#header").load("header.html");
+            $("#header").load("header.php");
             $("#footer").load("footer.html");
         });
     </script>
