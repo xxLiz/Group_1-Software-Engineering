@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
 if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
     $sql = "SELECT * FROM Users WHERE id = ?";
@@ -41,7 +40,6 @@ if (isset($_SESSION['id'])) {
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
-
     
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
