@@ -12,19 +12,67 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            $("#header").load("header.php");
+            $("#header").load("header.html");
             $("#footer").load("footer.html");
         });
+
+    
+        function fetchMenuDataAndCalculateTotal() {
+            fetch('http://localhost:3500/globalcart/') 
+                .then(response => response.json())
+                .then(data => {
+                    let subtotal = 0;
+                    const orderTableBody = document.getElementById('orderTableBody');
+                    data.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.name}</td>
+                            <td>$${item.price}</td>
+                          
+                        `;
+                        orderTableBody.appendChild(row);
+                        subtotal += (item.price * item.quantity);
+                    });
+                    //const deliveryFee = 0;
+                    //const discount = subtotal * 0.2; 
+                    //const total = subtotal - discount + deliveryFee;
+
+                  
+                    //document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
+                    //document.getElementById('discount').innerText = `-$${discount.toFixed(2)}`;
+                    //document.getElementById('total').innerText = `$${total.toFixed(2)}`;
+                })
+                .catch(error => console.error('Error fetching menu data:', error));
+        }
+
+        // Call the fetchMenuDataAndCalculateTotal function when the page loads
+        window.onload = fetchMenuDataAndCalculateTotal;
+
+        // Increase quantity function
+        function increaseQuantity(itemId) {
+            const quantityElement = document.querySelector(`#orderTableBody tr[data-id="${itemId}"] .quantity`);
+            const quantity = parseInt(quantityElement.innerText);
+            quantityElement.innerText = quantity + 1;
+        }
+
+        // Decrease quantity function
+        function decreaseQuantity(itemId) {
+            const quantityElement = document.querySelector(`#orderTableBody tr[data-id="${itemId}"] .quantity`);
+            const quantity = parseInt(quantityElement.innerText);
+            if (quantity > 1) {
+                quantityElement.innerText = quantity - 1;
+            }
+        }
     </script>
-    <style>
-        /* Form Styles */
+     <style>
+       
         .delivery-form {
             margin-top: 20px;
         }
 
         .delivery-form label {
             font-weight: bold;
-            color: #000; /* Set label text color to black */
+            color: #000; 
         }
 
         .delivery-form input[type="email"],
@@ -81,6 +129,28 @@
         .delivery-form textarea {
             height: 100px;
         }
+
+        /* Quantity button styles */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-control button {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            color: #333;
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .quantity-control button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .quantity-control span {
+            margin: 0 8px;
+        }
     </style>
 </head>
 <body>
@@ -103,21 +173,11 @@
                                             <tr>
                                                 <th>Food</th>
                                                 <th>Price</th>
-                                                <th>Quantity</th>
+                                                
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Product 1</td>
-                                                <td>$20.00</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Product 2</td>
-                                                <td>$30.00</td>
-                                                <td>2</td>
-                                            </tr>
-                                          
+                                        <tbody id="orderTableBody">
+                                            <!-- Data will be populated dynamically here -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -129,7 +189,7 @@
                                     <div class="payment-plan-type">TFD</div>
                                     <div class="payment-plan-info">
                                         <div class="payment-plan-info-name"></div>
-                                        <div class="payment-plan-info-price">$49.00</div>
+                                        <div class="payment-plan-info-price"></div>
                                     </div>
                                     <a href="#" class="payment-plan-change">Change</a>
                                 </div>
@@ -140,12 +200,16 @@
                                     </div>
                                     <div class="payment-summary-item">
                                         <div class="payment-summary-name">Discount 20%</div>
-                                        <div class="payment-summary-price">-$10</div>
+                                        <div class="payment-summary-price" id="discount"></div>
+                                    </div>
+                                    <div class="payment-summary-item">
+                                        <div class="payment-summary-name">Subtotal</div>
+                                        <div class="payment-summary-price" id="subtotal"></div>
                                     </div>
                                     <div class="payment-summary-divider"></div>
                                     <div class="payment-summary-item payment-summary-total">
                                         <div class="payment-summary-name">Total</div>
-                                        <div class="payment-summary-price">-$10</div>
+                                        <div class="payment-summary-price" id="total"></div>
                                     </div>
                                 </div>
                             </div>
@@ -226,12 +290,26 @@
             }
         }
 
-        // Dummy functions for processing payment methods
         function processCardPayment() {
             alert("Processing Card Payment...");
             // Here you can add your code to process card payment
         }
 
+        // Increase quantity function
+        function increaseQuantity(itemId) {
+            const quantityElement = document.querySelector(`#orderTableBody tr[data-id="${itemId}"] .quantity`);
+            const quantity = parseInt(quantityElement.innerText);
+            quantityElement.innerText = quantity + 1;
+        }
+
+        // Decrease quantity function
+        function decreaseQuantity(itemId) {
+            const quantityElement = document.querySelector(`#orderTableBody tr[data-id="${itemId}"] .quantity`);
+            const quantity = parseInt(quantityElement.innerText);
+            if (quantity > 1) {
+                quantityElement.innerText = quantity - 1;
+            }
+        }
     </script>
 </body>
 </html>
