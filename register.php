@@ -32,7 +32,7 @@
         }
         ?>
         <h2 class="text-center">Registration Form</h2>
-        <form action="handle_Registration.php" method="post">
+        <form action="handle_registration.php" method="post">
             <div class="form-group">
                 <label for="firstname">First Name:</label>
                 <input type="text" class="form-control" placeholder="Enter First Name" id="firstname" name="firstname"
