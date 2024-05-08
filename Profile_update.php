@@ -1,7 +1,60 @@
 <?php
+require_once 'DatabaseConnection.php'; 
+session_start();
+
+$dbConnection = new DatabaseConnection();
+$connection = $dbConnection->getConnection(); 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
- session_start();
- include "DatabaseConnection.php";
+    if (isset($_SESSION['id'])) {
+     
+        $user_id = $_SESSION['id'];
+
+        $firstname = $_POST['firstname'] ?? '';
+        $lastname = $_POST['lastname'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $mobilenumber = $_POST['mobilenumber'] ?? '';
+
+        $sql = "UPDATE Users SET firstname=?, lastname=?, email=?, mobilenumber=? WHERE id=?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("ssssii", $firstname, $lastname, $email, $mobilenumber, $user_id);
+
+        if ($stmt->execute()) {
+            echo "Profile updated successfully!";
+        } else {
+            echo "Error updating profile: " . $connection->error;
+        }
+
+     
+        $stmt->close();
+    } else {
+        echo "User ID is not set in the session.";
+    }
+}
+
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+    $sql = "SELECT * FROM Users WHERE id = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+    } else {
+     
+        echo "No user data found.";
+    }
+  
+    $result->free();
+    $stmt->close();
+} else {
+    echo "User ID is not set in the session.";
+}
+
+$dbConnection->closeConnection();
 ?>
 
 <!DOCTYPE html>
@@ -18,56 +71,49 @@
         </script>
     <script>
         $(function () {
-            $("#header").load("header.html");
+            $("#header").load("header.php");
             $("#footer").load("footer.html");
         });
     </script>
 </head>
 
 <body class="body__style">
-
     <div id="header"></div>
-    <main>
-		<h1 class="profile__title">Profile Update</h1>
-			
-		<table class="table table-striped">
-			<tr><th class="table-text"><i class="bi bi-person-circle"></i>First Name</th>
-				<td>
-					<input value="<?=$row['firstname']?>" type="text" class="form-control" name="firstname" placeholder="First name">
-				</td>
-			</th>
-			<tr><th class="table-text"><i class="bi bi-person-square"></i>Last Name</th>
-				<td>
-					<input value="<?=$row['lastname']?>" type="text" class="form-control" name="lastname" placeholder="Last name">
-				</td>
-			</th>
-			<tr><th class="table-text"><i class="bi bi-envelope"></i>Email</th>
-				<td>
-					<input value="<?=$row['email']?>" type="text" class="form-control" name="email" placeholder="Email">
-				</td>
-			</th>
-			<tr><th class="table-text"><i class="bi bi-phone"></i>Phone Number</th>
-				<td>
-					<input value="<?=$row['mobilenumber']?>" type="text" class="form-control" name="mobilenumber" placeholder="Phone Number">
-				</td>
-			</th>
-			<tr><th class="table-text"><i class="bi bi-address"></i>Address</th>
-				<td>
-					<input value="<?=$row['address_id']?>" type="text" class="form-control" name="address" placeholder="Address">
-				</td>
-			</th>	
-		</table>
-		
-		<div align="center">
-            <a href="home.html">
-			    <button class="btn btn-primary float-end">Save</button>
-            </a>
-			<a href="profile.php">
-				<button class="btn btn-secondary float-end">Back</button>
-			</a>
-		</div>
+        <h1 class="profile__title">Profile Update</h1>
+        <form action="" method="post">
+            <table class="table table-striped">
+                <tr>
+                    <th class="table-text"><i class="bi bi-person-circle"></i>First Name</th>
+                    <td>
+                        <input value="<?=$row['firstname'] ?? ''?>" type="text" class="form-control" name="firstname" placeholder="First name">
+                    </td>
+                </tr>
+				<tr>
+                    <th class="table-text"><i class="bi bi-person-circle"></i>Last Name</th>
+                    <td>
+                        <input value="<?=$row['lastname'] ?? ''?>" type="text" class="form-control" name="lastname" placeholder="Last name">
+                    </td>
+                </tr>
+				<tr>
+                    <th class="table-text"><i class="bi bi-envelope"></i>Email</th>
+                    <td>
+                        <input value="<?=$row['email'] ?? ''?>" type="text" class="form-control" name="email" placeholder="Email">
+                    </td>
+                </tr>
+				<tr>
+                    <th class="table-text"><i class="bi bi-telephone"></i>Mobile Number</th>
+                    <td>
+                        <input value="<?=$row['mobilenumber'] ?? ''?>" type="text" class="form-control" name="mobilenumber" placeholder="Mobile number">
+                    </td>
+                </tr>
+            </table>
+            <div align="center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="profile.php" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
 
-	</main>
-	<div id="footer"></div>
+    <div id="footer"></div>
 </body>
+
 </html>
