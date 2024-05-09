@@ -18,8 +18,8 @@ session_start();
 
         <nav class="header__nav">
           <ul class="header__list">
-            <li><a class="nav-link" href="./menu.php">Menu</a></li>
-            <li><a class="nav-link" href="./globalcart.php" class="phone my-2 my-lg-0">Cart</a></li>
+            <li><a class="nav-link" href="./menu2.php">Menu</a></li>
+            <li><a class="nav-link" href="./cart.php" class="phone my-2 my-lg-0">Cart</a></li>
             
             <?php
             if(isset($_SESSION['id'])){
