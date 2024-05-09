@@ -130,4 +130,4 @@ else {
 
 ?>
 
-<div id="header"></div></body></html>
+<div id="footer"></div></body></html>
