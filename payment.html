@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="styleCombine.css"/>
     <link rel="stylesheet" href="tailwindcss.css">
     <link rel="stylesheet" href="styleNA.css">
@@ -11,10 +12,12 @@
     <title>The Food Depot - Credit Card</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function () {
-            $("#header").load("header.html");
-            $("#footer").load("footer.html");
-        });
+    
+		$(function () {
+			$("#header").load("header.html");
+			$("#header").load("header.php");
+			$("#footer").load("footer.html");
+		});
 
     
         function fetchMenuDataAndCalculateTotal() {
@@ -64,7 +67,7 @@
             }
         }
     </script>
-     <style>
+    <style>
        
         .delivery-form {
             margin-top: 20px;
@@ -153,6 +156,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="header"></div>
     <main>
@@ -204,12 +208,12 @@
                                     </div>
                                     <div class="payment-summary-item">
                                         <div class="payment-summary-name">Subtotal</div>
-                                        <div class="payment-summary-price" id="subtotal"></div>
+                                        <div class="payment-summary-price" id="subtotal">$100</div>
                                     </div>
                                     <div class="payment-summary-divider"></div>
                                     <div class="payment-summary-item payment-summary-total">
                                         <div class="payment-summary-name">Total</div>
-                                        <div class="payment-summary-price" id="total"></div>
+                                        <div class="payment-summary-price" id="total">$100</div>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +231,7 @@
                         
                             <div class="delivery-form-group">
                                 <label for="expiry" class="delivery-form-label">Expiry Date</label>
-                                <input type="text" placeholder="MM/YY" class="delivery-form-control" name="expiry" id="expiry required>
+                                <input type="text" placeholder="MM/YY" class="delivery-form-control" name="expiry" id="expiry required">
                             </div>
                             
                             <div class="delivery-form-group">
