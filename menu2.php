@@ -98,11 +98,25 @@ echo 'var api_url = "http://localhost:3500/cart/' . $_SESSION['email'] . '"'
 ?>
 
 function addToCart(id, itemname) {
-    fetch(api_url, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ id_in_menu: id })
-    }).then(() => { alert(itemname + " added to cart."); });
+    var count = $('#quantity' + id).val();
+    alert(count);
+
+    for (var i = 0; i < count; i++) {
+        if (i != count - 1) {
+            fetch(api_url, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ id_in_menu: id })
+            });
+        }
+        else {
+            fetch(api_url, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ id_in_menu: id })
+            }).then(() => { alert(itemname + " added to cart."); });
+        }
+    }
 }
     </script>
     <h1>Menu</h1>
@@ -118,7 +132,8 @@ if ($api_connection) {
     <h3 class=foodname>' . $menu[$i]->name . '</h3>
     <div class=fooddesc>' . $menu[$i]->description . '</div>
     <div class=foodprice>$' . $menu[$i]->price . '</div>
-    <button class=addtocart type=button onclick="addToCart(' . $menu[$i]->id . ', \'' . $menu[$i]->name . '\')">Add to Cart</button>
+    <input style="border: 1px solid black;" type="number" id="quantity' . $menu[$i]->id . '" name="quantity" min="1" max="10" value="1">
+    <button class=addtocart type=button onclick="addToCart(' . $menu[$i]->id . ', \'' . $menu[$i]->name . '\', )">Add to Cart</button>
     </li>';
     }
 
