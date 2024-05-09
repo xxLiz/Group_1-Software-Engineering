@@ -11,7 +11,7 @@ class checkOutest extends TestCase
         $_POST["last_name"] = "Doe";
         $_POST["email"] = "john@example.com";
         $_POST["phone"] = "1234567890";
-        $_POST["payment_method"] = "card"; // Assuming "card" payment method
+        $_POST["payment_method"] = "card"; 
 
         // Mock DatabaseConnection class
         $dbConnectionMock = $this->getMockBuilder(DatabaseConnection::class)
