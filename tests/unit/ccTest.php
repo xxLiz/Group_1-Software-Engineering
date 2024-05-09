@@ -7,12 +7,12 @@ class ccTest extends TestCase
     public function testProcessCreditCard_ValidData()
     {
         // Simulate form data
-        $_POST["card"] = "1234567890123456"; // Card number
-        $_POST["expiry"] = "12/25"; // Expiry date
-        $_POST["cvv"] = "123"; // CVV
-        $_POST["billing"] = "123 Main St"; // Billing address
-        $_POST["email"] = "test@example.com"; // Email
-        $_POST["phone"] = "1234567890"; // Phone number
+        $_POST["card"] = "1234567890123456"; 
+        $_POST["expiry"] = "12/25"; 
+        $_POST["cvv"] = "123"; 
+        $_POST["billing"] = "123 Main St"; 
+        $_POST["email"] = "test@example.com"; 
+        $_POST["phone"] = "1234567890"; 
 
         // Mock DatabaseConnection class
         $dbConnectionMock = $this->getMockBuilder(DatabaseConnection::class)
