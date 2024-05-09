@@ -22,6 +22,7 @@ app.use(express.json());
 app.use('/users', require('./views/usersView'));
 app.use('/menu', require('./views/menuView'));
 app.use('/globalcart', require('./views/cartView'));
+app.use('/cart', require('./views/newCartView'));
 
 app.all('/*', (req, res) => {
     res.status(404);
